@@ -13,6 +13,7 @@ Usage :
 import argparse
 import csv
 import json
+import re
 import logging
 import os
 import sqlite3
@@ -90,6 +91,21 @@ def latest_version(db):
     return row[0] if row else None
 
 
+SUJETS = {
+    "reseau": r"r[ée]seau|4g|5g|antenne|couverture|d[ée]bit|connexion|coupure|panne|capte|signal|bug",
+    "fibre_box": r"fibre|box|livebox|freebox|bbox|wifi|wi-fi|adsl|raccord|installation",
+    "prix": r"prix|tarif|cher|euros?|€|factur|augment|promo|offre|abonnement|forfait|rembours|frais",
+    "service_client": r"service client|sav|conseiller|hotline|t[ée]l[ée]phon|r[ée]ponse|attente|r[ée]clamation|ticket|joindre|support",
+    "resiliation": r"r[ée]sili|quitter|partir|changer d.op[ée]rateur|portabilit|rio",
+}
+SUJETS_RE = {k: re.compile(v, re.I) for k, v in SUJETS.items()}
+
+
+def sujets_de(text):
+    found = [k for k, rx in SUJETS_RE.items() if rx.search(text or "")]
+    return found or ["autre"]
+
+
 def export_public(root, log):
     """IDs + labels + stats agregees. Jamais de texte (regles X)."""
     out = root / "public"
@@ -102,20 +118,28 @@ def export_public(root, log):
             return 0
         rows = db.execute(
             """SELECT d.post_id, d.split, d.operateur_cible, d.sentiment, d.label_source,
-                      ROUND(d.score, 4), substr(p.created_at, 1, 10)
+                      ROUND(d.score, 4), substr(p.created_at, 1, 10), d.text
                FROM dataset_final d LEFT JOIN posts p ON p.post_id = d.post_id
                WHERE d.version = ? ORDER BY d.post_id""", (version,)).fetchall()
         with open(out / "dataset_ids.csv", "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
             w.writerow(["post_id", "split", "operateur", "sentiment", "label_source", "score", "date"])
-            w.writerows(rows)
+            w.writerows(r[:7] for r in rows)
         daily, totals = {}, {}
-        for _, _, op, sent, _, _, day in rows:
+        topics = {}
+        for _, _, op, sent, _, _, day, text in rows:
             op = op or "inconnu"
             if not sent:
                 continue
             daily.setdefault((day or "inconnue", op), {"negatif": 0, "neutre": 0, "positif": 0})[sent] += 1
             totals.setdefault(op, {"negatif": 0, "neutre": 0, "positif": 0})[sent] += 1
+            for s in sujets_de(text):
+                topics.setdefault((day or "inconnue", op, s), {"negatif": 0, "neutre": 0, "positif": 0})[sent] += 1
+        with open(out / "stats_sujets.csv", "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["date", "operateur", "sujet", "negatif", "neutre", "positif", "total"])
+            for (day, op, s), c in sorted(topics.items()):
+                w.writerow([day, op, s, c["negatif"], c["neutre"], c["positif"], sum(c.values())])
         with open(out / "stats_par_jour.csv", "w", newline="", encoding="utf-8") as f:
             w = csv.writer(f)
             w.writerow(["date", "operateur", "negatif", "neutre", "positif", "total"])
@@ -131,7 +155,7 @@ def export_public(root, log):
         site = root / "docs" / "data"
         if site.parent.exists():
             site.mkdir(exist_ok=True)
-            for name in ("stats_resume.json", "stats_par_jour.csv"):
+            for name in ("stats_resume.json", "stats_par_jour.csv", "stats_sujets.csv"):
                 shutil.copy2(out / name, site / name)
         log.info("Export public : %d lignes (version %s) dans %s", len(rows), version, out)
         return len(rows)
