@@ -1,0 +1,23 @@
+# Donnees privees : textes X, base, modeles -> jamais sur GitHub
+/data/
+/dataset/
+/exports/
+/collectes/
+/archives/
+/erreurs/
+/logs/
+/model_cache/
+/models/
+/backup_v3/
+/orig_v3/
+public/dataset_ids.csv
+*.sqlite3
+*.sqlite3-*
+*.safetensors
+*.bin
+*.pt
+*.csv
+!docs/data/*.csv
+/__pycache__/
+*.pyc
+*.lock

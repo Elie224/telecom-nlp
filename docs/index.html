@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telecom NLP : ce que les gens pensent des opérateurs</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--txt:#e2e8f0;--mut:#94a3b8;--neg:#ef4444;--neu:#94a3b8;--pos:#22c55e}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--txt)}
+header{padding:28px 20px 8px;max-width:1100px;margin:auto}h1{margin:0 0 6px;font-size:1.7rem}
+.sub{color:var(--mut);font-size:.95rem}main{max-width:1100px;margin:auto;padding:12px 20px 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border-radius:14px;padding:18px}.op{font-weight:700;font-size:1.15rem;margin-bottom:8px}
+.big{font-size:2rem;font-weight:800}.bar{display:flex;height:10px;border-radius:6px;overflow:hidden;margin:10px 0 6px}
+.bar span{display:block;height:100%}.leg{font-size:.85rem;color:var(--mut);display:flex;justify-content:space-between}
+.row{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}@media(min-width:900px){.row{grid-template-columns:1fr 1fr}}
+h2{font-size:1.05rem;margin:0 0 10px}footer{color:var(--mut);font-size:.8rem;max-width:1100px;margin:auto;padding:0 20px 30px;line-height:1.5}
+a{color:#60a5fa}select{background:#0f172a;color:var(--txt);border:1px solid #334155;border-radius:8px;padding:4px 8px}
+</style>
+</head>
+<body>
+<header>
+<h1>Ce que les gens pensent des opérateurs télécom</h1>
+<div class="sub">Analyse de sentiment de posts publics en français sur X : Orange, Free, SFR, Bouygues Telecom. <span id="meta"></span></div>
+</header>
+<main>
+<div class="grid" id="cards"></div>
+<div class="row">
+ <div class="card"><h2>Répartition des sentiments</h2><canvas id="stack"></canvas></div>
+ <div class="card"><h2>Part de posts négatifs par jour <select id="metric"><option value="negatif">négatifs</option><option value="positif">positifs</option></select></h2><canvas id="trend"></canvas></div>
+</div>
+<div class="row"><div class="card"><h2>Volume de posts analysés par jour</h2><canvas id="vol"></canvas></div></div>
+</main>
+<footer>
+Méthode : collecte de posts publics sur X, nettoyage, puis classification automatique (modèle <code>cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual</code>).
+Les résultats sont indicatifs : le modèle fait des erreurs (environ 62 % d'exactitude mesurée), surtout sur les messages neutres, et l'échantillon ne représente pas toute la clientèle.
+Aucun texte de post n'est publié ici, seulement des statistiques agrégées. Données : <a href="data/stats_resume.json">stats_resume.json</a>, <a href="data/stats_par_jour.csv">stats_par_jour.csv</a>.
+</footer>
+<script>
+const COL={"Orange":"#ff7900","Free":"#cd1e25","SFR":"#e2001a","Bouygues Telecom":"#009bce"};
+const COLB={"Orange":"#ff7900","Free":"#a3a3a3","SFR":"#e11d48","Bouygues Telecom":"#0ea5e9"};
+const S=["negatif","neutre","positif"],SC={negatif:"#ef4444",neutre:"#94a3b8",positif:"#22c55e"};
+const pct=(a,b)=>b?Math.round(1000*a/b)/10:0;
+Chart.defaults.color="#cbd5e1";Chart.defaults.borderColor="#334155";
+async function load(){
+ const r=await (await fetch("data/stats_resume.json",{cache:"no-store"})).json();
+ const csv=(await (await fetch("data/stats_par_jour.csv",{cache:"no-store"})).text()).trim().split(/\r?\n/).slice(1).map(l=>{const[d,o,n,ne,p,t]=l.split(",");return{d,o,negatif:+n,neutre:+ne,positif:+p,t:+t}});
+ const ops=Object.keys(r.operateurs).filter(o=>o!=="inconnu");
+ document.getElementById("meta").textContent=`${r.total} posts analysés, mis à jour le ${new Date(r.generated_at).toLocaleString("fr-FR")}.`;
+ const cards=document.getElementById("cards");
+ ops.sort((a,b)=>r.operateurs[a].pct_negatif-r.operateurs[b].pct_negatif).forEach(o=>{
+  const s=r.operateurs[o],ne=pct(s.neutre,s.total);
+  cards.insertAdjacentHTML("beforeend",`<div class="card" style="border-top:4px solid ${COL[o]||"#64748b"}">
+  <div class="op">${o}</div><div class="big" style="color:var(--neg)">${s.pct_negatif}%</div><div class="sub">de posts négatifs, sur ${s.total}</div>
+  <div class="bar"><span style="width:${s.pct_negatif}%;background:var(--neg)"></span><span style="width:${ne}%;background:var(--neu)"></span><span style="width:${s.pct_positif}%;background:var(--pos)"></span></div>
+  <div class="leg"><span>négatif ${s.pct_negatif}%</span><span>neutre ${ne}%</span><span>positif ${s.pct_positif}%</span></div></div>`)});
+ new Chart(stack,{type:"bar",data:{labels:ops,datasets:S.map(k=>({label:k,backgroundColor:SC[k],data:ops.map(o=>pct(r.operateurs[o][k],r.operateurs[o].total))}))},
+  options:{indexAxis:"y",scales:{x:{stacked:true,max:100,ticks:{callback:v=>v+"%"}},y:{stacked:true}}}});
+ const days=[...new Set(csv.map(x=>x.d))].sort();
+ const get=(o,d)=>csv.find(x=>x.o===o&&x.d===d);
+ const trend=new Chart(document.getElementById("trend"),{type:"line",data:{labels:days,datasets:[]},options:{scales:{y:{min:0,max:100,ticks:{callback:v=>v+"%"}}},spanGaps:true}});
+ const draw=m=>{trend.data.datasets=ops.map(o=>({label:o,borderColor:COLB[o],backgroundColor:COLB[o],tension:.3,data:days.map(d=>{const x=get(o,d);return x&&x.t>=3?pct(x[m],x.t):null})}));trend.update()};
+ draw("negatif");metric.onchange=e=>draw(e.target.value);
+ new Chart(vol,{type:"bar",data:{labels:days,datasets:ops.map(o=>({label:o,backgroundColor:COLB[o],data:days.map(d=>(get(o,d)||{t:0}).t)}))},options:{scales:{x:{stacked:true},y:{stacked:true}}}});
+}
+load().catch(e=>{document.getElementById("cards").innerHTML=`<div class="card">Impossible de charger les données (${e}). En local, lance un petit serveur : <code>python -m http.server</code> dans le dossier docs.</div>`});
+</script>
+</body>
+</html>
