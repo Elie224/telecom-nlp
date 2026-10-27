@@ -74,3 +74,22 @@ date,operateur,sujet,negatif,neutre,positif,total
 2026-10-23,SFR,fibre_box,2,0,0,2
 2026-10-23,SFR,prix,1,0,1,2
 2026-10-23,SFR,reseau,1,0,0,1
+2026-10-25,Bouygues Telecom,autre,3,1,2,6
+2026-10-25,Bouygues Telecom,fibre_box,1,0,0,1
+2026-10-25,Bouygues Telecom,prix,1,0,1,2
+2026-10-25,Bouygues Telecom,reseau,1,1,2,4
+2026-10-25,Bouygues Telecom,resiliation,0,1,1,2
+2026-10-25,Free,autre,0,0,3,3
+2026-10-25,Free,fibre_box,1,1,2,4
+2026-10-25,Free,prix,0,3,0,3
+2026-10-25,Free,reseau,2,1,0,3
+2026-10-25,Free,service_client,0,0,1,1
+2026-10-25,Orange,fibre_box,1,0,1,2
+2026-10-25,Orange,prix,3,2,0,5
+2026-10-25,Orange,reseau,9,1,0,10
+2026-10-25,Orange,service_client,1,0,1,2
+2026-10-25,SFR,autre,4,1,0,5
+2026-10-25,SFR,fibre_box,0,1,0,1
+2026-10-25,SFR,prix,0,0,2,2
+2026-10-25,SFR,reseau,1,0,0,1
+2026-10-25,SFR,service_client,0,0,1,1
