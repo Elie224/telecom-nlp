@@ -1,39 +1,39 @@
 {
-  "version": "20261027T140043Z",
-  "generated_at": "2026-10-27T14:00:43+00:00",
-  "total": 315,
+  "version": "20261028T140102Z",
+  "generated_at": "2026-10-28T14:01:02+00:00",
+  "total": 359,
   "operateurs": {
     "Bouygues Telecom": {
-      "negatif": 38,
-      "neutre": 16,
-      "positif": 21,
-      "total": 75,
-      "pct_negatif": 50.7,
-      "pct_positif": 28.0
+      "negatif": 44,
+      "neutre": 20,
+      "positif": 22,
+      "total": 86,
+      "pct_negatif": 51.2,
+      "pct_positif": 25.6
     },
     "Free": {
-      "negatif": 34,
-      "neutre": 22,
-      "positif": 23,
-      "total": 79,
-      "pct_negatif": 43.0,
-      "pct_positif": 29.1
+      "negatif": 36,
+      "neutre": 23,
+      "positif": 26,
+      "total": 85,
+      "pct_negatif": 42.4,
+      "pct_positif": 30.6
     },
     "Orange": {
-      "negatif": 58,
-      "neutre": 11,
-      "positif": 18,
-      "total": 87,
-      "pct_negatif": 66.7,
-      "pct_positif": 20.7
+      "negatif": 66,
+      "neutre": 15,
+      "positif": 22,
+      "total": 103,
+      "pct_negatif": 64.1,
+      "pct_positif": 21.4
     },
     "SFR": {
-      "negatif": 41,
+      "negatif": 52,
       "neutre": 16,
       "positif": 17,
-      "total": 74,
-      "pct_negatif": 55.4,
-      "pct_positif": 23.0
+      "total": 85,
+      "pct_negatif": 61.2,
+      "pct_positif": 20.0
     }
   }
 }
