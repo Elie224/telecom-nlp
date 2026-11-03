@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Baromètre des opérateurs télécom</title>
+<title>Baromètre de l'opinion sur X</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
@@ -60,42 +60,57 @@ a{color:var(--acc)}
 <body>
 <section class="hero"><div class="wrap">
  <span class="badge" id="upd">Chargement…</span>
- <h1>Baromètre des opérateurs télécom</h1>
- <p>Ce que les internautes disent d'Orange, Free, SFR et Bouygues Telecom sur X, analysé automatiquement post par post.</p>
+ <h1 id="title">Baromètre des opérateurs télécom</h1>
+ <p id="subtitle">Ce que les internautes disent d'Orange, Free, SFR et Bouygues Telecom sur X, analysé automatiquement post par post.</p>
 </div></section>
 <main class="wrap">
+ <div id="nodata" class="card empty" style="display:none;margin-bottom:14px"></div>
+ <div id="content">
  <div class="card filters">
+  <div><label for="dom">Domaine</label><select id="dom" style="border:1.5px solid var(--line);border-radius:8px;padding:7px 10px;font:inherit;font-size:.9rem;font-weight:600"><option value="telecom">Opérateurs télécom</option></select></div>
   <div><label>Période</label><div class="seg" id="period">
    <button data-d="7">7 jours</button><button data-d="30">30 jours</button><button data-d="90">3 mois</button><button data-d="0" class="on">Tout</button><button data-d="c">Dates</button></div></div>
   <div id="custom" style="display:none"><label>Du / au</label><input type="date" id="from"> <input type="date" id="to"></div>
-  <div><label>Opérateurs</label><div class="chips" id="ops"></div></div>
+  <div><label id="opsLabel">Opérateurs</label><div style="display:flex;gap:6px;margin-bottom:6px"><button class="chip" id="selAll" type="button">Tout</button><button class="chip" id="selNone" type="button">Aucun</button></div><div class="chips" id="ops"></div></div>
  </div>
  <div class="kpis">
   <div class="card kpi"><div class="l">Posts analysés</div><div class="v" id="k1">–</div><div class="s" id="k1s"></div></div>
-  <div class="card kpi"><div class="l">Avis négatifs</div><div class="v" style="color:var(--neg)" id="k2">–</div><div class="s">tous opérateurs</div></div>
-  <div class="card kpi"><div class="l">Avis positifs</div><div class="v" style="color:var(--pos)" id="k3">–</div><div class="s">tous opérateurs</div></div>
+  <div class="card kpi"><div class="l">Avis négatifs</div><div class="v" style="color:var(--neg)" id="k2">–</div><div class="s allLbl">tous opérateurs</div></div>
+  <div class="card kpi"><div class="l">Avis positifs</div><div class="v" style="color:var(--pos)" id="k3">–</div><div class="s allLbl">tous opérateurs</div></div>
   <div class="card kpi"><div class="l">Sujet n°1 des plaintes</div><div class="v" id="k4" style="font-size:1.35rem">–</div><div class="s" id="k4s"></div></div>
  </div>
  <div class="grid2">
   <div class="card"><h2>Classement</h2><p class="hint">Score de satisfaction = % positifs − % négatifs (de −100 à +100).</p>
-   <table><thead><tr><th>#</th><th>Opérateur</th><th>Score</th><th class="hide-m">Répartition</th><th class="hide-m">Posts</th></tr></thead><tbody id="rank"></tbody></table></div>
+   <table><thead><tr><th>#</th><th id="colLbl">Opérateur</th><th>Score</th><th class="hide-m">Répartition</th><th class="hide-m">Posts</th></tr></thead><tbody id="rank"></tbody></table></div>
   <div class="card"><h2>Répartition des avis</h2><p class="hint">Négatif, neutre et positif, en % des posts.</p><div class="chart"><canvas id="cDist"></canvas></div></div>
  </div>
- <div class="card full"><h2>De quoi se plaignent les gens ?</h2><p class="hint">Sujets détectés dans les posts négatifs. Clique sur un sujet pour le détail par opérateur.</p>
+ <div class="card full"><h2>De quoi se plaignent les gens ?</h2><p class="hint">Sujets détectés dans les posts négatifs. Clique sur un sujet pour le détail par <span class="oneLbl">opérateur</span>.</p>
   <div class="topics" id="topics"></div><div class="chart" style="margin-top:16px"><canvas id="cTopic"></canvas></div></div>
  <div class="grid2">
   <div class="card"><h2>Évolution du score</h2><p class="hint">Score de satisfaction par jour (jours avec au moins 3 posts).</p><div class="chart"><canvas id="cTrend"></canvas></div></div>
   <div class="card"><h2>Volume de posts</h2><p class="hint">Nombre de posts analysés par jour.</p><div class="chart"><canvas id="cVol"></canvas></div></div>
  </div>
+ </div>
 </main>
 <footer class="wrap">
  <b>Méthode.</b> Posts publics en français collectés sur X, nettoyés puis classés automatiquement par le modèle <code>twitter-xlm-roberta-base-sentiment-multilingual</code>. Les sujets sont détectés par mots-clés.
  Les résultats sont indicatifs : le modèle se trompe environ une fois sur trois (surtout sur les messages neutres) et l'échantillon ne représente pas toute la clientèle.
- Aucun texte de post n'est publié ici, seulement des statistiques agrégées : <a href="data/stats_par_jour.csv">stats_par_jour.csv</a>, <a href="data/stats_sujets.csv">stats_sujets.csv</a>.
+ Aucun texte de post n'est publié ici, seulement des statistiques agrégées : <a id="l1" href="data/stats_par_jour.csv">stats_par_jour.csv</a>, <a id="l2" href="data/stats_sujets.csv">stats_sujets.csv</a>.
 </footer>
 <script>
 const OPS={"Orange":{c:"#ff7900",a:"OR"},"Free":{c:"#1f2937",a:"FR"},"SFR":{c:"#e2001a",a:"SFR"},"Bouygues Telecom":{c:"#00a3e0",a:"BY"}};
-const SUJ={reseau:"Réseau / connexion",fibre_box:"Fibre / box",prix:"Prix / facture",service_client:"Service client",resiliation:"Résiliation",autre:"Autre"};
+const SUJ_TEL={reseau:"Réseau / connexion",fibre_box:"Fibre / box",prix:"Prix / facture",service_client:"Service client",resiliation:"Résiliation",autre:"Autre"};
+const SUJ_GEN={prix:"Prix / abonnement",qualite:"Qualité / bugs",service_client:"Service / livraison",polemique:"Polémique / confiance",autre:"Autre"};
+let SUJ=SUJ_TEL;
+const DOMS={telecom:{label:"Opérateurs télécom",title:"Baromètre des opérateurs télécom",sub:"Ce que les internautes disent d'Orange, Free, SFR et Bouygues Telecom sur X, analysé automatiquement post par post.",one:"opérateur",many:"Opérateurs",all:"tous opérateurs",base:"data/"},
+ llm:{label:"Intelligences artificielles (LLM)",title:"Baromètre des IA (LLM)",sub:"Ce que les internautes disent de ChatGPT, Gemini, Claude, Mistral et des autres IA sur X.",one:"IA",many:"IA",all:"toutes les IA"},
+ voitures:{label:"Marques de voitures",title:"Baromètre des marques de voitures",sub:"Ce que les internautes disent des grandes marques automobiles sur X.",one:"marque",many:"Marques",all:"toutes marques"},
+ produits:{label:"Produits et marques tech",title:"Baromètre des produits et marques",sub:"Ce que les internautes disent des produits et marques grand public sur X.",one:"produit",many:"Produits",all:"tous produits"},
+ personnalites:{label:"Personnalités",title:"Baromètre des personnalités",sub:"Ce que les internautes disent de personnalités publiques sur X (statistiques agrégées uniquement).",one:"personnalité",many:"Personnalités",all:"toutes personnalités"},
+ services:{label:"Services du quotidien",title:"Baromètre des services du quotidien",sub:"Banques, livraison, transports, énergie, fast-food : ce qu'en disent les internautes sur X.",one:"service",many:"Services",all:"tous services"},
+ sport_jeux:{label:"Sport et jeux vidéo",title:"Baromètre sport et jeux vidéo",sub:"Clubs, jeux et plateformes : ce qu'en disent les internautes sur X.",one:"sujet",many:"Sujets",all:"tous sujets"}};
+const PAL=["#4f46e5","#f59e0b","#10b981","#ef4444","#0ea5e9","#8b5cf6","#ec4899","#14b8a6","#84cc16","#f97316","#64748b","#a855f7"];
+const colOf=o=>OPS[o]?.c||(window.SUBJ_COL&&SUBJ_COL[o])||"#64748b";
 const S=["negatif","neutre","positif"],SC={negatif:"#ef4444",neutre:"#a3aec2",positif:"#10b981"};
 const $=id=>document.getElementById(id),pct=(a,b)=>b?a*100/b:0,f1=x=>(Math.round(x*10)/10).toLocaleString("fr-FR");
 Chart.defaults.font.family="Inter,system-ui,sans-serif";Chart.defaults.color="#64748b";Chart.defaults.borderColor="#eef1f7";
@@ -118,7 +133,7 @@ function render(){
  const score=o=>pct(A[o].positif,A[o].total)-pct(A[o].negatif,A[o].total);
  const ranked=ops.sort((a,b)=>score(b)-score(a));
  $("rank").innerHTML=ranked.length?ranked.map((o,i)=>{const s=score(o),a=A[o],col=s>=0?"#10b981":s>-25?"#f59e0b":"#ef4444";
-  return `<tr><td class="rank">${["🥇","🥈","🥉"][i]||i+1}</td><td><div class="opn"><span class="logo" style="background:${OPS[o]?.c||"#64748b"}">${OPS[o]?.a||o[0]}</span>${o}</div></td>
+  return `<tr><td class="rank">${["🥇","🥈","🥉"][i]||i+1}</td><td><div class="opn"><span class="logo" style="background:${colOf(o)}">${OPS[o]?.a||esc(o).slice(0,2).toUpperCase()}</span>${esc(o)}</div></td>
   <td><span class="pill" style="background:${col}1a;color:${col}">${s>0?"+":""}${Math.round(s)}</span></td>
   <td class="hide-m"><div class="mini">${S.map(k=>`<span style="width:${pct(a[k],a.total)}%;background:${SC[k]}"></span>`).join("")}</div></td><td class="hide-m">${a.total}</td></tr>`}).join("")
   :`<tr><td colspan="5" class="empty">Aucune donnée sur cette période.</td></tr>`;
@@ -128,27 +143,51 @@ function render(){
  $("topics").innerHTML=Object.keys(SUJ).filter(k=>k!=="autre").map(k=>`<div class="topic ${topicSel===k?"on":""}" data-k="${k}"><div class="t">${SUJ[k]}</div><div class="n">${negT[k]||0}</div><div class="p">${f1(pct(negT[k]||0,totNeg))} % des plaintes</div></div>`).join("");
  document.querySelectorAll(".topic").forEach(e=>e.onclick=()=>{topicSel=topicSel===e.dataset.k?null:e.dataset.k;render()});
  const keys=topicSel?[topicSel]:Object.keys(SUJ).filter(k=>k!=="autre");
- mk("cTopic",{type:"bar",data:{labels:keys.map(k=>SUJ[k]),datasets:ranked.map(o=>({label:o,backgroundColor:OPS[o]?.c,borderRadius:4,
+ mk("cTopic",{type:"bar",data:{labels:keys.map(k=>SUJ[k]),datasets:ranked.map(o=>({label:o,backgroundColor:colOf(o),borderRadius:4,
   data:keys.map(k=>{const r=trows.filter(x=>x.operateur===o&&x.sujet===k);const n=r.reduce((a,x)=>a+x.negatif,0);return pct(n,A[o].total)})}))},
   options:{plugins:{tooltip:{callbacks:{label:c=>`${c.dataset.label} : ${f1(c.raw)} % de ses posts`}}},scales:{y:{ticks:{callback:v=>v+"%"},title:{display:true,text:"% des posts négatifs sur ce sujet"}},x:{grid:{display:false}}}}});
  const days=[...new Set(rows.map(x=>x.date))].sort(),g=(o,d)=>rows.find(x=>x.operateur===o&&x.date===d);
  const lab=days.map(d=>new Date(d).toLocaleDateString("fr-FR",{day:"numeric",month:"short"}));
- mk("cTrend",{type:"line",data:{labels:lab,datasets:ranked.map(o=>({label:o,borderColor:OPS[o]?.c,backgroundColor:OPS[o]?.c,tension:.35,pointRadius:4,spanGaps:true,
+ mk("cTrend",{type:"line",data:{labels:lab,datasets:ranked.map(o=>({label:o,borderColor:colOf(o),backgroundColor:colOf(o),tension:.35,pointRadius:4,spanGaps:true,
   data:days.map(d=>{const x=g(o,d);return x&&x.total>=3?pct(x.positif,x.total)-pct(x.negatif,x.total):null})}))},options:{scales:{y:{min:-100,max:100}}}});
- mk("cVol",{type:"bar",data:{labels:lab,datasets:ranked.map(o=>({label:o,backgroundColor:OPS[o]?.c,borderRadius:3,data:days.map(d=>(g(o,d)||{total:0}).total)}))},
+ mk("cVol",{type:"bar",data:{labels:lab,datasets:ranked.map(o=>({label:o,backgroundColor:colOf(o),borderRadius:3,data:days.map(d=>(g(o,d)||{total:0}).total)}))},
   options:{scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true}}}});
 }
-async function load(){
- const [r,d,t]=await Promise.all(["stats_resume.json","stats_par_jour.csv","stats_sujets.csv"].map(f=>fetch("data/"+f,{cache:"no-store"}).then(x=>{if(!x.ok)throw f;return f.endsWith("json")?x.json():x.text()})));
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let DOM="telecom",INDEX=null;
+const getf=(base,f)=>fetch(base+f,{cache:"no-store"}).then(x=>{if(!x.ok)throw f;return f.endsWith("json")?x.json():x.text()});
+function setLabels(){const D=DOMS[DOM];$("title").textContent=D.title;$("subtitle").textContent=D.sub;$("opsLabel").textContent=D.many;$("colLbl").textContent=D.one[0].toUpperCase()+D.one.slice(1);
+ document.querySelectorAll(".allLbl").forEach(e=>e.textContent=D.all);document.querySelectorAll(".oneLbl").forEach(e=>e.textContent=D.one);
+ const b=D.base||`data/multi/${DOM}/`;$("l1").href=b+"stats_par_jour.csv";$("l2").href=b+"stats_sujets.csv";document.title=D.title}
+function noData(msg){$("content").style.display="none";$("nodata").style.display="block";$("nodata").innerHTML=msg;$("upd").textContent=DOMS[DOM].label}
+async function loadDomain(){
+ setLabels();topicSel=null;SUJ=DOM==="telecom"?SUJ_TEL:SUJ_GEN;
+ if(DOM!=="telecom"&&!(INDEX&&INDEX.domaines&&INDEX.domaines[DOM]&&INDEX.domaines[DOM].disponible))return noData("Pas encore de données pour ce domaine.");
+ const base=DOMS[DOM].base||`data/multi/${DOM}/`;let r,d,t;
+ try{[r,d,t]=await Promise.all(["stats_resume.json","stats_par_jour.csv","stats_sujets.csv"].map(f=>getf(base,f)))}
+ catch(e){if(DOM==="telecom")throw e;return noData("Pas encore de données pour ce domaine.")}
  DAY=parse(d).filter(x=>x.operateur!=="inconnu");TOP=parse(t).filter(x=>x.operateur!=="inconnu");
+ if(!DAY.length)return noData("Pas encore de données pour ce domaine.");
+ $("nodata").style.display="none";$("content").style.display="";
  $("upd").textContent="Mis à jour le "+new Date(r.generated_at).toLocaleString("fr-FR",{dateStyle:"long",timeStyle:"short"});
- const all=[...new Set(DAY.map(x=>x.operateur))].sort();sel=new Set(all);
- $("ops").innerHTML=all.map(o=>`<button class="chip" data-o="${o}"><i style="background:${OPS[o]?.c||"#64748b"}"></i>${o}</button>`).join("");
- document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(sel.has(o)){if(sel.size>1)sel.delete(o)}else sel.add(o);b.classList.toggle("off",!sel.has(o));render()});
- document.querySelectorAll("#period button").forEach(b=>b.onclick=()=>{period=b.dataset.d;document.querySelectorAll("#period button").forEach(x=>x.classList.toggle("on",x===b));$("custom").style.display=period==="c"?"block":"none";render()});
- $("from").onchange=$("to").onchange=render;render();
+ const all=[...new Set(DAY.map(x=>x.operateur))].sort();window.SUBJ_COL={};all.forEach((o,i)=>SUBJ_COL[o]=PAL[i%PAL.length]);sel=new Set(all);
+ $("ops").innerHTML=all.map(o=>`<button class="chip" data-o="${esc(o)}"><i style="background:${colOf(o)}"></i>${esc(o)}</button>`).join("");
+ const sync=()=>document.querySelectorAll("#ops .chip").forEach(b=>b.classList.toggle("off",!sel.has(b.dataset.o)));
+ document.querySelectorAll("#ops .chip").forEach(b=>b.onclick=()=>{const o=b.dataset.o;if(sel.has(o)){if(sel.size>1)sel.delete(o)}else sel.add(o);sync();render()});
+ $("selAll").onclick=()=>{sel=new Set(all);sync();render()};
+ $("selNone").onclick=()=>{sel=new Set([all[0]]);sync();render()};
+ render();
 }
-load().catch(e=>{document.querySelector("main").innerHTML=`<div class="card empty">Impossible de charger les données (${e}).<br>En local, lance <code>python -m http.server</code> dans le dossier <code>docs</code>.</div>`});
+async function load(){
+ try{INDEX=await getf("data/multi/","domaines.json")}catch(e){INDEX=null}
+ $("dom").innerHTML=Object.entries(DOMS).map(([k,v])=>{const n=k==="telecom"?"":INDEX?.domaines?.[k]?.disponible?"":" (pas encore de données)";return `<option value="${k}">${v.label}${n}</option>`}).join("");
+ const h=location.hash.slice(1);if(DOMS[h])DOM=h;$("dom").value=DOM;
+ $("dom").onchange=()=>{DOM=$("dom").value;history.replaceState(null,"","#"+DOM);loadDomain().catch(err)};
+ document.querySelectorAll("#period button").forEach(b=>b.onclick=()=>{period=b.dataset.d;document.querySelectorAll("#period button").forEach(x=>x.classList.toggle("on",x===b));$("custom").style.display=period==="c"?"block":"none";render()});
+ $("from").onchange=$("to").onchange=render;await loadDomain();
+}
+const err=e=>{noData(`Impossible de charger les données (${esc(e)}).<br>En local, lance <code>python -m http.server</code> dans le dossier <code>docs</code>.`)};
+load().catch(err);
 </script>
 </body>
 </html>

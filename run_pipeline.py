@@ -192,6 +192,16 @@ def publish(root, log):
     log.info("Site publie." if r.returncode == 0 else f"Echec du push : {r.stderr.strip()}")
 
 
+def run_multi(root, args, log):
+    """Stats multi-domaines (collectes_multi/ -> docs/data/multi/). Un echec n'affecte pas le telecom."""
+    if args.no_multi or not (root / "analyze_multi.py").exists() or not (root / "collectes_multi").is_dir():
+        return
+    try:
+        run_step("multi-domaines", ["analyze_multi.py", "--device", args.device], root, log, args.step_timeout_h)
+    except Exception as e:  # noqa: BLE001
+        log.error("Etape multi-domaines en echec (telecom non affecte) : %s", e)
+
+
 def has_new_csv(root):
     return any((root / "collectes").glob("*.csv"))
 
@@ -203,6 +213,7 @@ def main():
     p.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
     p.add_argument("--no-publish", action="store_true", help="Ne pas pousser le site sur GitHub.")
     p.add_argument("--no-train", action="store_true")
+    p.add_argument("--no-multi", action="store_true", help="Ne pas analyser collectes_multi/.")
     p.add_argument("--train-threshold", type=int, default=1000)
     p.add_argument("--step-timeout-h", type=float, default=6)
     p.add_argument("--train-timeout-h", type=float, default=12)
@@ -214,7 +225,8 @@ def main():
     with Lock(root / "data" / "run_pipeline.lock"):
         state = load_state(state_path)
         if not args.force and not has_new_csv(root):
-            log.info("Aucun nouveau CSV dans collectes/ : rien a faire.")
+            log.info("Aucun nouveau CSV dans collectes/ : rien a faire pour le telecom.")
+            run_multi(root, args, log)
             return 0
         try:
             for name, cmd in STEPS:
@@ -235,6 +247,7 @@ def main():
             return 1
         finally:
             state_path.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            run_multi(root, args, log)
 
 
 if __name__ == "__main__":
