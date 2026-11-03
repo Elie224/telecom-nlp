@@ -59,6 +59,7 @@ a{color:var(--acc)}
 </head>
 <body>
 <section class="hero"><div class="wrap">
+ <button id="back" type="button" style="display:none;margin-right:10px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.15);color:#fff;border-radius:99px;padding:4px 12px;font:inherit;font-size:.82rem;cursor:pointer">← Retour</button>
  <span class="badge" id="upd">Chargement…</span>
  <h1 id="title">Baromètre des opérateurs télécom</h1>
  <p id="subtitle">Ce que les internautes disent d'Orange, Free, SFR et Bouygues Telecom sur X, analysé automatiquement post par post.</p>
@@ -182,7 +183,12 @@ async function load(){
  try{INDEX=await getf("data/multi/","domaines.json")}catch(e){INDEX=null}
  $("dom").innerHTML=Object.entries(DOMS).map(([k,v])=>{const n=k==="telecom"?"":INDEX?.domaines?.[k]?.disponible?"":" (pas encore de données)";return `<option value="${k}">${v.label}${n}</option>`}).join("");
  const h=location.hash.slice(1);if(DOMS[h])DOM=h;$("dom").value=DOM;
- $("dom").onchange=()=>{DOM=$("dom").value;history.replaceState(null,"","#"+DOM);loadDomain().catch(err)};
+ const depth=()=>(history.state&&history.state.d)||0,upBack=()=>{$("back").style.display=(depth()>0||DOM!=="telecom")?"inline-block":"none"};
+ if(!history.state)history.replaceState({d:0},"",location.hash||"#"+DOM);
+ $("dom").onchange=()=>{DOM=$("dom").value;history.pushState({d:depth()+1},"","#"+DOM);upBack();loadDomain().catch(err)};
+ window.onpopstate=()=>{const h=location.hash.slice(1);DOM=DOMS[h]?h:"telecom";$("dom").value=DOM;upBack();loadDomain().catch(err)};
+ $("back").onclick=()=>{if(depth()>0)history.back();else{DOM="telecom";$("dom").value=DOM;history.replaceState({d:0},"","#telecom");upBack();loadDomain().catch(err)}};
+ upBack();
  document.querySelectorAll("#period button").forEach(b=>b.onclick=()=>{period=b.dataset.d;document.querySelectorAll("#period button").forEach(x=>x.classList.toggle("on",x===b));$("custom").style.display=period==="c"?"block":"none";render()});
  $("from").onchange=$("to").onchange=render;await loadDomain();
 }
