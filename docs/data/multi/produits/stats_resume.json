@@ -1,0 +1,68 @@
+{
+  "domaine": "produits",
+  "label": "Produits et marques tech",
+  "generated_at": "2026-11-11T14:00:06+00:00",
+  "total": 1202,
+  "sujets": {
+    "Amazon": {
+      "negatif": 35,
+      "neutre": 53,
+      "positif": 55,
+      "total": 143
+    },
+    "Netflix": {
+      "negatif": 41,
+      "neutre": 32,
+      "positif": 50,
+      "total": 123
+    },
+    "Nintendo Switch 2": {
+      "negatif": 35,
+      "neutre": 37,
+      "positif": 53,
+      "total": 125
+    },
+    "PS5": {
+      "negatif": 30,
+      "neutre": 59,
+      "positif": 43,
+      "total": 132
+    },
+    "Samsung Galaxy": {
+      "negatif": 27,
+      "neutre": 45,
+      "positif": 39,
+      "total": 111
+    },
+    "Shein": {
+      "negatif": 44,
+      "neutre": 45,
+      "positif": 36,
+      "total": 125
+    },
+    "Spotify": {
+      "negatif": 26,
+      "neutre": 57,
+      "positif": 42,
+      "total": 125
+    },
+    "Temu": {
+      "negatif": 36,
+      "neutre": 56,
+      "positif": 26,
+      "total": 118
+    },
+    "Xiaomi": {
+      "negatif": 24,
+      "neutre": 28,
+      "positif": 71,
+      "total": 123
+    },
+    "iPhone": {
+      "negatif": 58,
+      "neutre": 44,
+      "positif": 36,
+      "total": 138
+    }
+  }
+}

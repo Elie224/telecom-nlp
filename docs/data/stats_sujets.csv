@@ -276,3 +276,35 @@ date,operateur,sujet,negatif,neutre,positif,total
 2026-11-08,SFR,prix,1,0,2,3
 2026-11-08,SFR,reseau,1,0,0,1
 2026-11-08,SFR,service_client,2,0,0,2
+2026-11-10,Bouygues Telecom,autre,2,2,1,5
+2026-11-10,Bouygues Telecom,fibre_box,0,1,0,1
+2026-11-10,Bouygues Telecom,prix,2,1,0,3
+2026-11-10,Bouygues Telecom,reseau,1,1,0,2
+2026-11-10,Bouygues Telecom,service_client,0,1,0,1
+2026-11-10,Free,autre,2,0,1,3
+2026-11-10,Free,fibre_box,1,2,0,3
+2026-11-10,Free,prix,0,0,2,2
+2026-11-10,Orange,fibre_box,6,3,1,10
+2026-11-10,Orange,prix,1,0,2,3
+2026-11-10,Orange,reseau,2,0,1,3
+2026-11-10,Orange,resiliation,0,0,1,1
+2026-11-10,Orange,service_client,1,0,1,2
+2026-11-10,SFR,autre,2,1,0,3
+2026-11-10,SFR,fibre_box,2,0,0,2
+2026-11-10,SFR,prix,1,0,0,1
+2026-11-10,SFR,reseau,2,0,0,2
+2026-11-11,Bouygues Telecom,autre,9,0,1,10
+2026-11-11,Bouygues Telecom,prix,0,1,1,2
+2026-11-11,Free,autre,2,2,0,4
+2026-11-11,Free,fibre_box,2,2,4,8
+2026-11-11,Free,prix,0,1,2,3
+2026-11-11,Free,reseau,2,0,0,2
+2026-11-11,Free,service_client,0,1,1,2
+2026-11-11,Orange,fibre_box,2,3,3,8
+2026-11-11,Orange,prix,0,0,1,1
+2026-11-11,Orange,reseau,5,2,1,8
+2026-11-11,SFR,autre,0,3,2,5
+2026-11-11,SFR,fibre_box,1,2,0,3
+2026-11-11,SFR,prix,2,0,0,2
+2026-11-11,SFR,reseau,1,1,0,2
+2026-11-11,SFR,service_client,1,0,0,1

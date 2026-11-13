@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-11-11T14:00:06+00:00",
+  "domaines": {
+    "llm": {
+      "label": "Intelligences artificielles (LLM)",
+      "total": 1089,
+      "disponible": true
+    },
+    "voitures": {
+      "label": "Marques de voitures",
+      "total": 1151,
+      "disponible": true
+    },
+    "produits": {
+      "label": "Produits et marques tech",
+      "total": 1202,
+      "disponible": true
+    },
+    "personnalites": {
+      "label": "Personnalités",
+      "total": 952,
+      "disponible": true
+    },
+    "services": {
+      "label": "Services du quotidien",
+      "total": 1187,
+      "disponible": true
+    },
+    "sport_jeux": {
+      "label": "Sport et jeux vidéo",
+      "total": 540,
+      "disponible": true
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "domaine": "voitures",
+  "label": "Marques de voitures",
+  "generated_at": "2026-11-11T14:00:06+00:00",
+  "total": 1151,
+  "sujets": {
+    "BMW": {
+      "negatif": 66,
+      "neutre": 37,
+      "positif": 31,
+      "total": 134
+    },
+    "BYD": {
+      "negatif": 38,
+      "neutre": 24,
+      "positif": 54,
+      "total": 116
+    },
+    "Citroën": {
+      "negatif": 33,
+      "neutre": 44,
+      "positif": 49,
+      "total": 126
+    },
+    "Dacia": {
+      "negatif": 28,
+      "neutre": 30,
+      "positif": 22,
+      "total": 80
+    },
+    "Mercedes": {
+      "negatif": 59,
+      "neutre": 37,
+      "positif": 41,
+      "total": 137
+    },
+    "Peugeot": {
+      "negatif": 40,
+      "neutre": 69,
+      "positif": 30,
+      "total": 139
+    },
+    "Renault": {
+      "negatif": 55,
+      "neutre": 50,
+      "positif": 44,
+      "total": 149
+    },
+    "Tesla": {
+      "negatif": 43,
+      "neutre": 50,
+      "positif": 51,
+      "total": 144
+    },
+    "Toyota": {
+      "negatif": 26,
+      "neutre": 60,
+      "positif": 44,
+      "total": 130
+    },
+    "Volkswagen": {
+      "negatif": 42,
+      "neutre": 40,
+      "positif": 34,
+      "total": 116
+    }
+  }
+}
