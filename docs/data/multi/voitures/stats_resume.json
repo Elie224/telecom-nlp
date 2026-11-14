@@ -1,68 +1,68 @@
 {
   "domaine": "voitures",
   "label": "Marques de voitures",
-  "generated_at": "2026-11-11T14:00:06+00:00",
-  "total": 1151,
+  "generated_at": "2026-11-13T14:01:32+00:00",
+  "total": 1617,
   "sujets": {
     "BMW": {
-      "negatif": 66,
-      "neutre": 37,
-      "positif": 31,
-      "total": 134
+      "negatif": 85,
+      "neutre": 46,
+      "positif": 55,
+      "total": 186
     },
     "BYD": {
-      "negatif": 38,
-      "neutre": 24,
-      "positif": 54,
-      "total": 116
+      "negatif": 49,
+      "neutre": 46,
+      "positif": 72,
+      "total": 167
     },
     "Citroën": {
-      "negatif": 33,
-      "neutre": 44,
-      "positif": 49,
-      "total": 126
+      "negatif": 48,
+      "neutre": 65,
+      "positif": 66,
+      "total": 179
     },
     "Dacia": {
-      "negatif": 28,
-      "neutre": 30,
-      "positif": 22,
-      "total": 80
+      "negatif": 38,
+      "neutre": 42,
+      "positif": 35,
+      "total": 115
     },
     "Mercedes": {
-      "negatif": 59,
-      "neutre": 37,
-      "positif": 41,
-      "total": 137
+      "negatif": 75,
+      "neutre": 54,
+      "positif": 64,
+      "total": 193
     },
     "Peugeot": {
-      "negatif": 40,
-      "neutre": 69,
-      "positif": 30,
-      "total": 139
+      "negatif": 55,
+      "neutre": 98,
+      "positif": 39,
+      "total": 192
     },
     "Renault": {
-      "negatif": 55,
-      "neutre": 50,
-      "positif": 44,
-      "total": 149
+      "negatif": 79,
+      "neutre": 67,
+      "positif": 68,
+      "total": 214
     },
     "Tesla": {
-      "negatif": 43,
-      "neutre": 50,
-      "positif": 51,
-      "total": 144
+      "negatif": 58,
+      "neutre": 69,
+      "positif": 72,
+      "total": 199
     },
     "Toyota": {
-      "negatif": 26,
-      "neutre": 60,
-      "positif": 44,
-      "total": 130
+      "negatif": 33,
+      "neutre": 87,
+      "positif": 61,
+      "total": 181
     },
     "Volkswagen": {
-      "negatif": 42,
-      "neutre": 40,
-      "positif": 34,
-      "total": 116
+      "negatif": 54,
+      "neutre": 49,
+      "positif": 55,
+      "total": 158
     }
   }
 }

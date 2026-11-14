@@ -1,56 +1,56 @@
 {
   "domaine": "personnalites",
   "label": "Personnalités",
-  "generated_at": "2026-11-11T14:00:06+00:00",
-  "total": 952,
+  "generated_at": "2026-11-13T14:01:32+00:00",
+  "total": 1344,
   "sujets": {
     "Aya Nakamura": {
-      "negatif": 47,
-      "neutre": 25,
-      "positif": 34,
-      "total": 106
+      "negatif": 61,
+      "neutre": 45,
+      "positif": 48,
+      "total": 154
     },
     "Elon Musk": {
-      "negatif": 60,
-      "neutre": 42,
-      "positif": 34,
-      "total": 136
+      "negatif": 85,
+      "neutre": 63,
+      "positif": 42,
+      "total": 190
     },
     "Emmanuel Macron": {
-      "negatif": 93,
-      "neutre": 27,
-      "positif": 28,
-      "total": 148
+      "negatif": 126,
+      "neutre": 46,
+      "positif": 41,
+      "total": 213
     },
     "Kylian Mbappé": {
-      "negatif": 74,
-      "neutre": 35,
-      "positif": 26,
-      "total": 135
+      "negatif": 109,
+      "neutre": 43,
+      "positif": 38,
+      "total": 190
     },
     "Sam Altman": {
-      "negatif": 41,
-      "neutre": 40,
-      "positif": 22,
-      "total": 103
+      "negatif": 56,
+      "neutre": 59,
+      "positif": 34,
+      "total": 149
     },
     "Squeezie": {
-      "negatif": 59,
-      "neutre": 34,
-      "positif": 31,
-      "total": 124
+      "negatif": 81,
+      "neutre": 55,
+      "positif": 38,
+      "total": 174
     },
     "Taylor Swift": {
-      "negatif": 52,
-      "neutre": 35,
-      "positif": 34,
-      "total": 121
+      "negatif": 60,
+      "neutre": 42,
+      "positif": 69,
+      "total": 171
     },
     "Zinedine Zidane": {
-      "negatif": 62,
-      "neutre": 34,
-      "positif": 30,
-      "total": 126
+      "negatif": 94,
+      "neutre": 42,
+      "positif": 39,
+      "total": 175
     }
   }
 }

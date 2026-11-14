@@ -1,68 +1,68 @@
 {
   "domaine": "produits",
   "label": "Produits et marques tech",
-  "generated_at": "2026-11-11T14:00:06+00:00",
-  "total": 1202,
+  "generated_at": "2026-11-13T14:01:32+00:00",
+  "total": 1692,
   "sujets": {
     "Amazon": {
-      "negatif": 35,
-      "neutre": 53,
-      "positif": 55,
-      "total": 143
+      "negatif": 49,
+      "neutre": 75,
+      "positif": 70,
+      "total": 194
     },
     "Netflix": {
-      "negatif": 41,
-      "neutre": 32,
-      "positif": 50,
-      "total": 123
+      "negatif": 59,
+      "neutre": 49,
+      "positif": 65,
+      "total": 173
     },
     "Nintendo Switch 2": {
-      "negatif": 35,
-      "neutre": 37,
-      "positif": 53,
-      "total": 125
+      "negatif": 51,
+      "neutre": 48,
+      "positif": 76,
+      "total": 175
     },
     "PS5": {
-      "negatif": 30,
-      "neutre": 59,
-      "positif": 43,
-      "total": 132
+      "negatif": 63,
+      "neutre": 73,
+      "positif": 55,
+      "total": 191
     },
     "Samsung Galaxy": {
-      "negatif": 27,
-      "neutre": 45,
-      "positif": 39,
-      "total": 111
+      "negatif": 35,
+      "neutre": 59,
+      "positif": 60,
+      "total": 154
     },
     "Shein": {
-      "negatif": 44,
-      "neutre": 45,
-      "positif": 36,
-      "total": 125
+      "negatif": 58,
+      "neutre": 60,
+      "positif": 57,
+      "total": 175
     },
     "Spotify": {
-      "negatif": 26,
-      "neutre": 57,
-      "positif": 42,
-      "total": 125
+      "negatif": 40,
+      "neutre": 74,
+      "positif": 61,
+      "total": 175
     },
     "Temu": {
-      "negatif": 36,
-      "neutre": 56,
-      "positif": 26,
-      "total": 118
+      "negatif": 48,
+      "neutre": 78,
+      "positif": 44,
+      "total": 170
     },
     "Xiaomi": {
-      "negatif": 24,
-      "neutre": 28,
-      "positif": 71,
-      "total": 123
+      "negatif": 37,
+      "neutre": 40,
+      "positif": 98,
+      "total": 175
     },
     "iPhone": {
-      "negatif": 58,
-      "neutre": 44,
-      "positif": 36,
-      "total": 138
+      "negatif": 83,
+      "neutre": 69,
+      "positif": 47,
+      "total": 199
     }
   }
 }

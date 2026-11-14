@@ -1,38 +1,38 @@
 {
   "domaine": "sport_jeux",
   "label": "Sport et jeux vidéo",
-  "generated_at": "2026-11-11T14:00:06+00:00",
-  "total": 540,
+  "generated_at": "2026-11-13T14:01:32+00:00",
+  "total": 771,
   "sujets": {
     "EA FC": {
-      "negatif": 17,
-      "neutre": 15,
-      "positif": 11,
-      "total": 43
+      "negatif": 24,
+      "neutre": 31,
+      "positif": 20,
+      "total": 75
     },
     "Fortnite": {
-      "negatif": 49,
-      "neutre": 59,
-      "positif": 17,
-      "total": 125
+      "negatif": 66,
+      "neutre": 77,
+      "positif": 31,
+      "total": 174
     },
     "GTA 6": {
-      "negatif": 46,
-      "neutre": 35,
-      "positif": 43,
-      "total": 124
+      "negatif": 78,
+      "neutre": 44,
+      "positif": 57,
+      "total": 179
     },
     "OM": {
-      "negatif": 39,
-      "neutre": 31,
-      "positif": 55,
-      "total": 125
+      "negatif": 56,
+      "neutre": 44,
+      "positif": 75,
+      "total": 175
     },
     "PSG": {
-      "negatif": 76,
-      "neutre": 27,
-      "positif": 25,
-      "total": 128
+      "negatif": 99,
+      "neutre": 40,
+      "positif": 39,
+      "total": 178
     }
   }
 }
