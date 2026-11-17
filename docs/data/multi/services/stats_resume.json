@@ -1,68 +1,68 @@
 {
   "domaine": "services",
   "label": "Services du quotidien",
-  "generated_at": "2026-11-13T14:01:32+00:00",
-  "total": 1654,
+  "generated_at": "2026-11-16T14:00:10+00:00",
+  "total": 1885,
   "sujets": {
     "Boursorama": {
-      "negatif": 40,
-      "neutre": 58,
-      "positif": 61,
-      "total": 159
+      "negatif": 53,
+      "neutre": 61,
+      "positif": 69,
+      "total": 183
     },
     "Deliveroo": {
-      "negatif": 75,
-      "neutre": 31,
-      "positif": 24,
-      "total": 130
+      "negatif": 81,
+      "neutre": 36,
+      "positif": 27,
+      "total": 144
     },
     "EDF": {
-      "negatif": 93,
-      "neutre": 47,
-      "positif": 35,
-      "total": 175
+      "negatif": 113,
+      "neutre": 51,
+      "positif": 38,
+      "total": 202
     },
     "KFC": {
-      "negatif": 80,
-      "neutre": 60,
-      "positif": 34,
-      "total": 174
+      "negatif": 92,
+      "neutre": 67,
+      "positif": 40,
+      "total": 199
     },
     "McDonald's": {
-      "negatif": 86,
-      "neutre": 52,
-      "positif": 41,
-      "total": 179
+      "negatif": 103,
+      "neutre": 59,
+      "positif": 45,
+      "total": 207
     },
     "RATP": {
-      "negatif": 107,
-      "neutre": 51,
-      "positif": 17,
-      "total": 175
+      "negatif": 118,
+      "neutre": 63,
+      "positif": 19,
+      "total": 200
     },
     "Revolut": {
-      "negatif": 42,
-      "neutre": 83,
-      "positif": 59,
-      "total": 184
+      "negatif": 48,
+      "neutre": 99,
+      "positif": 64,
+      "total": 211
     },
     "SNCF": {
-      "negatif": 101,
-      "neutre": 42,
-      "positif": 37,
-      "total": 180
+      "negatif": 113,
+      "neutre": 50,
+      "positif": 42,
+      "total": 205
     },
     "TotalEnergies": {
-      "negatif": 66,
-      "neutre": 56,
-      "positif": 54,
-      "total": 176
+      "negatif": 71,
+      "neutre": 68,
+      "positif": 62,
+      "total": 201
     },
     "Uber Eats": {
-      "negatif": 103,
-      "neutre": 55,
-      "positif": 39,
-      "total": 197
+      "negatif": 118,
+      "neutre": 60,
+      "positif": 43,
+      "total": 221
     }
   }
 }

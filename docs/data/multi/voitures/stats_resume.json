@@ -1,68 +1,68 @@
 {
   "domaine": "voitures",
   "label": "Marques de voitures",
-  "generated_at": "2026-11-13T14:01:32+00:00",
-  "total": 1617,
+  "generated_at": "2026-11-16T14:00:10+00:00",
+  "total": 1853,
   "sujets": {
     "BMW": {
-      "negatif": 85,
-      "neutre": 46,
-      "positif": 55,
-      "total": 186
+      "negatif": 94,
+      "neutre": 54,
+      "positif": 63,
+      "total": 211
     },
     "BYD": {
-      "negatif": 49,
-      "neutre": 46,
-      "positif": 72,
-      "total": 167
-    },
-    "Citroën": {
-      "negatif": 48,
-      "neutre": 65,
-      "positif": 66,
-      "total": 179
-    },
-    "Dacia": {
-      "negatif": 38,
-      "neutre": 42,
-      "positif": 35,
-      "total": 115
-    },
-    "Mercedes": {
-      "negatif": 75,
-      "neutre": 54,
-      "positif": 64,
-      "total": 193
-    },
-    "Peugeot": {
-      "negatif": 55,
-      "neutre": 98,
-      "positif": 39,
+      "negatif": 60,
+      "neutre": 55,
+      "positif": 77,
       "total": 192
     },
+    "Citroën": {
+      "negatif": 55,
+      "neutre": 72,
+      "positif": 77,
+      "total": 204
+    },
+    "Dacia": {
+      "negatif": 47,
+      "neutre": 49,
+      "positif": 44,
+      "total": 140
+    },
+    "Mercedes": {
+      "negatif": 82,
+      "neutre": 64,
+      "positif": 74,
+      "total": 220
+    },
+    "Peugeot": {
+      "negatif": 62,
+      "neutre": 111,
+      "positif": 47,
+      "total": 220
+    },
     "Renault": {
-      "negatif": 79,
-      "neutre": 67,
-      "positif": 68,
-      "total": 214
+      "negatif": 95,
+      "neutre": 78,
+      "positif": 75,
+      "total": 248
     },
     "Tesla": {
-      "negatif": 58,
-      "neutre": 69,
-      "positif": 72,
-      "total": 199
+      "negatif": 60,
+      "neutre": 81,
+      "positif": 82,
+      "total": 223
     },
     "Toyota": {
-      "negatif": 33,
-      "neutre": 87,
-      "positif": 61,
-      "total": 181
+      "negatif": 38,
+      "neutre": 100,
+      "positif": 68,
+      "total": 206
     },
     "Volkswagen": {
-      "negatif": 54,
-      "neutre": 49,
-      "positif": 55,
-      "total": 158
+      "negatif": 72,
+      "neutre": 55,
+      "positif": 57,
+      "total": 184
     }
   }
 }

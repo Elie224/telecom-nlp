@@ -1,68 +1,68 @@
 {
   "domaine": "llm",
   "label": "Intelligences artificielles (LLM)",
-  "generated_at": "2026-11-13T14:01:32+00:00",
-  "total": 1523,
+  "generated_at": "2026-11-16T14:00:10+00:00",
+  "total": 1735,
   "sujets": {
     "ChatGPT": {
-      "negatif": 117,
-      "neutre": 114,
-      "positif": 75,
-      "total": 306
+      "negatif": 134,
+      "neutre": 126,
+      "positif": 84,
+      "total": 344
     },
     "Claude": {
-      "negatif": 84,
-      "neutre": 130,
-      "positif": 107,
-      "total": 321
+      "negatif": 96,
+      "neutre": 147,
+      "positif": 120,
+      "total": 363
     },
     "Copilot": {
-      "negatif": 45,
-      "neutre": 70,
-      "positif": 38,
-      "total": 153
+      "negatif": 66,
+      "neutre": 73,
+      "positif": 39,
+      "total": 178
     },
     "DeepSeek": {
-      "negatif": 40,
-      "neutre": 83,
-      "positif": 71,
-      "total": 194
+      "negatif": 46,
+      "neutre": 92,
+      "positif": 79,
+      "total": 217
     },
     "Gemini": {
-      "negatif": 57,
-      "neutre": 114,
-      "positif": 50,
-      "total": 221
+      "negatif": 66,
+      "neutre": 127,
+      "positif": 58,
+      "total": 251
     },
     "Grok": {
-      "negatif": 100,
-      "neutre": 116,
-      "positif": 30,
-      "total": 246
+      "negatif": 113,
+      "neutre": 129,
+      "positif": 34,
+      "total": 276
     },
     "Llama": {
       "negatif": 13,
-      "neutre": 68,
+      "neutre": 78,
       "positif": 24,
-      "total": 105
-    },
-    "Mistral": {
-      "negatif": 73,
-      "neutre": 70,
-      "positif": 65,
-      "total": 208
-    },
-    "Perplexity": {
-      "negatif": 24,
-      "neutre": 48,
-      "positif": 43,
       "total": 115
     },
+    "Mistral": {
+      "negatif": 84,
+      "neutre": 78,
+      "positif": 74,
+      "total": 236
+    },
+    "Perplexity": {
+      "negatif": 25,
+      "neutre": 62,
+      "positif": 45,
+      "total": 132
+    },
     "Qwen": {
-      "negatif": 38,
-      "neutre": 66,
-      "positif": 54,
-      "total": 158
+      "negatif": 43,
+      "neutre": 76,
+      "positif": 58,
+      "total": 177
     }
   }
 }

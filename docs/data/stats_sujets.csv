@@ -329,3 +329,18 @@ date,operateur,sujet,negatif,neutre,positif,total
 2026-11-12,SFR,reseau,4,0,0,4
 2026-11-12,SFR,resiliation,1,0,0,1
 2026-11-12,SFR,service_client,0,1,0,1
+2026-11-15,Bouygues Telecom,autre,6,0,0,6
+2026-11-15,Bouygues Telecom,fibre_box,2,1,0,3
+2026-11-15,Bouygues Telecom,reseau,2,0,0,2
+2026-11-15,Free,autre,1,0,0,1
+2026-11-15,Free,fibre_box,4,1,1,6
+2026-11-15,Free,prix,3,0,1,4
+2026-11-15,Free,reseau,2,0,0,2
+2026-11-15,Free,resiliation,1,0,0,1
+2026-11-15,Orange,fibre_box,2,0,0,2
+2026-11-15,Orange,prix,1,0,0,1
+2026-11-15,Orange,reseau,3,1,1,5
+2026-11-15,SFR,autre,4,2,3,9
+2026-11-15,SFR,fibre_box,1,0,0,1
+2026-11-15,SFR,prix,0,0,2,2
+2026-11-15,SFR,reseau,1,0,1,2
